@@ -36,6 +36,9 @@ public class Principal {
 				break;
 			}
 			
+			
+			System.out.println("\n\n");
+			
 		}while(opcion!=0);	
 			
 			
