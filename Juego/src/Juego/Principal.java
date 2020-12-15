@@ -6,14 +6,21 @@ public class Principal {
 
 	public static int pintaMenu(Juego vJuegos[]) {
 		Scanner leer = new Scanner(System.in);
-		int opcion;
+		int opcion=-1;
 		
 		do{
-			System.out.println("Pulsa 1 para añadir un juego");
-			System.out.println("Pulsa 2 para añadir puntuacion a un juego");
-			System.out.println("Pulsa 3 para añadir ver todos tus juegos y sus records");
+			System.out.println("Pulsa 1 para aï¿½adir un juego");
+			System.out.println("Pulsa 2 para aï¿½adir puntuacion a un juego");
+			System.out.println("Pulsa 3 para aï¿½adir ver todos tus juegos y sus records");
 			System.out.println("Pulsa 0 para salir");
-			opcion=leer.nextInt();
+			
+			
+			try {
+				opcion=leer.nextInt();
+			} catch (Exception e) {
+				System.out.println("Error al leer el dato, dame un numero entre 0 y 3 por favor");
+				leer = new Scanner(System.in);
+			}
 			
 			switch (opcion) {
 			case 1:
@@ -46,11 +53,15 @@ public class Principal {
 	}
 		
 	
-	
 	public static void addJuego(Juego vJuegos[]) {
-		String nombre;
+		//aÃ±adir puntuacion y multijugador
+		
+		String nombre="";
 		int pos=0;
+		String confirm="";
+		boolean multi=false;
 		Scanner leer = new Scanner(System.in);
+		
 		
 		for (int i = 0; i < vJuegos.length; i++) {
 			if(vJuegos[i]==null) {
@@ -62,31 +73,65 @@ public class Principal {
 		
 		System.out.println("Dime el nombre del juego nuevo");
 		nombre=leer.nextLine();
-		vJuegos[pos]= new Juego(nombre);
+		
+		
+		
+		do {
+			System.out.println("Tu juego es multijugador?, escribe 's' si lo es o 'n' en el caso de que no lo sea");
+			confirm=leer.next();
+			
+			if (confirm.equalsIgnoreCase("s")) {
+				multi=true;
+			}
+		
+		} while (!confirm.equalsIgnoreCase("s") && !confirm.equalsIgnoreCase("n"));
+		
+		vJuegos[pos]= new Juego(nombre, multi);
 		
 	}
 	
+	
 	public static void addPuntuacion(Juego vJuegos[]) {
-		//pedir nombre y puntuacion
-		Scanner leer = new Scanner(System.in);
-		Scanner leerpunt = new Scanner(System.in);
-		String nombre;
-		int puntuacion;
-		
-		
-		
-		System.out.println("Dime el nombre del juego al que quieres añadir la puntuacion");
-		nombre=leer.nextLine();
-		System.out.println("Dime cual es la puntuacion que quieres añadir");
-		puntuacion=leerpunt.nextInt();
-		
-		for (int i = 0; i < vJuegos.length; i++) {
-			if (vJuegos[i]!=null && vJuegos[i].getNombre().equalsIgnoreCase(nombre)) {
-				vJuegos[i].ponerRecord(puntuacion);
+			//pedir nombre y puntuacion
+			Scanner leer = new Scanner(System.in);
+			Scanner leerpunt = new Scanner(System.in);
+			String nombre;
+			boolean bandera = false;
+			int puntuacion = -999999;
+			int pos=-99;
+			
+			
+			
+			System.out.println("Dime el nombre del juego al que quieres aï¿½adir la puntuacion");
+			nombre=leer.nextLine();
+			
+			for (int i = 0; i < vJuegos.length; i++) {
+				if (vJuegos[i]!=null && vJuegos[i].getNombre().equalsIgnoreCase(nombre)) {
+					bandera =true;
+					pos=i;
+					break;
+				}
+			}
+			
+			if (bandera==true) {
+				
+				do {
+					try {
+						System.out.println("Dime cual es la puntuacion que quieres aï¿½adir");
+						puntuacion=leerpunt.nextInt();
+					} catch (Exception e) {
+						System.out.println("Ha habido un error al introducir la puntuacion, por favor vuelve a introducir un numero posible");
+						leerpunt=new Scanner(System.in);
+					}
+					}while(puntuacion==-999999);
+					
+					vJuegos[pos].ponerRecord(puntuacion);	
+				
+			}else {
+				System.out.println("No se ha encontrado el juego al que le querias aÃ±adir la puntuacion");
 			}
 		}
-		
-	}
+	
 	
 	public static void verJuegos(Juego vJuegos[]){
 		for (int i = 0; i < vJuegos.length; i++) {
@@ -103,10 +148,9 @@ public class Principal {
 		Scanner leer = new Scanner(System.in);
 		Juego vJuegos[] = new Juego[100];
 		
-		vJuegos[0]= new Juego("Tetris");
-		vJuegos[1]= new Juego("Pacman");
-		vJuegos[2]= new Juego("LOL");
-		vJuegos[2].setMultijugador(true);
+		vJuegos[0]= new Juego("Tetris",false);
+		vJuegos[1]= new Juego("Pacman",false);
+		vJuegos[2]= new Juego("LOL",true);
 		
 		pintaMenu(vJuegos);
 			

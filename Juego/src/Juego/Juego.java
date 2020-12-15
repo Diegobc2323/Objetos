@@ -7,10 +7,10 @@ public class Juego {
 	private boolean multijugador;
 	
 	
-	public Juego(String nombre) {
+	public Juego(String nombre, boolean multi) {
 		this.nombre = nombre;
 		this.record = 0;
-		this.multijugador = false;
+		this.multijugador= multi;
 	}
 
 
