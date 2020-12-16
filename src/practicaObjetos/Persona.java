@@ -40,6 +40,15 @@ public class Persona {
 		this.altura = 0;
 	}
 
+	public Persona(String nombre, int edad, char sexo, double peso, double altura) {
+		this.nombre = nombre;
+		this.dni = generarDNI();
+		this.edad = edad;
+		this.sexo = comprobarSexo(sexo);
+		this.peso = peso;
+		this.altura = altura;
+	}
+	
 	public Persona(String nombre, String dni, int edad, char sexo, double peso, double altura) {
 		this.nombre = nombre;
 		this.dni = comprobarDNI(dni);
@@ -48,6 +57,9 @@ public class Persona {
 		this.peso = peso;
 		this.altura = altura;
 	}
+
+
+	
 	
 	public int calcularIMC() {
 		
@@ -63,9 +75,9 @@ public class Persona {
 
 	}
 
-	public boolean esMayorDeEdad() {
+	private boolean esMayorDeEdad() {
 		
-		if (edad<18) {
+		if (edad>18) {
 			return true;
 		}
 		
@@ -82,7 +94,6 @@ public class Persona {
 		
 	}
 
-	
 	private String comprobarDNI(String dni) {
 		boolean valido =false;
 		
@@ -132,11 +143,83 @@ public class Persona {
 	}
 	
 	
+	
+	
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public char getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(char sexo) {
+		this.sexo = sexo;
+	}
+
+	public double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(double peso) {
+		this.peso = peso;
+	}
+
+	public double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
+
+	
+	
 	@Override
 	public String toString() {
 		
-		return "nombre=" + nombre + ", dni=" + dni + ", edad=" + edad + ", sexo=" + sexo + ", peso=" + peso
-				+ ", altura=" + altura;
+		String mayor="";
+		String sobrepeso ="";
+		int numSobrepeso = calcularIMC();
+		
+		if(esMayorDeEdad()==true) {
+			mayor = ", es mayor de edad";
+		}else {
+			mayor = ", es menor";
+		}
+		
+		
+		
+		if (numSobrepeso==SOBREPESO) {
+			sobrepeso = "Tiene sobrepeso";
+		} else if (numSobrepeso==PESOIDONEO) {
+			sobrepeso = "no tiene problemas de peso";
+		}else {
+			sobrepeso="esta bajo de peso";
+		}
+		
+		return "Nombre: "+nombre+"\nEdad: "+edad+mayor+"\nSexo: "+sexo+"\nPeso: "+peso+" kg\nAltura: "+altura+" m\n"+sobrepeso;
 	}
 	
 	
