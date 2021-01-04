@@ -12,7 +12,7 @@ public class Principal {
 	
 		do {
 			
-			System.out.println("Pulsa 1 para añadir un contacto");
+			System.out.println("Pulsa 1 para anadir un contacto");
 			System.out.println("Pulsa 2 para buscar un contacto");
 			System.out.println("Pulsa 3 para eliminar un contacto");
 			System.out.println("Pulsa 4 para editar un contacto");
@@ -76,7 +76,7 @@ public class Principal {
 	public static void buscarContacto(Contacto[] vContacto, String bus) {
 		
 		String nombre="", numTrans="";
-		int num=-99;
+		int num=-99, cont=1;
 		boolean bandera=false;
 		
 		for (int i = 0; i < vContacto.length; i++) {
@@ -86,14 +86,31 @@ public class Principal {
 			
 			if (!nombre.equals("cambiame")) {
 				for (int j = 0; j < nombre.length(); j++) {
-					//Estoy aqui
+					
+					if (j+bus.length()<=nombre.length() && bus.equals(nombre.substring(j,j+bus.length()))) {
+						System.out.println("Busqueda "+cont+" - "+"Nombre: "+nombre+", Numero: "+num);
+						cont++;
+						bandera=true;
+						break;
+					}
+					
 				}
 				
 				for (int j = 0; j < numTrans.length(); j++) {
-					//Estoy aqui
+					if (j+bus.length()<=numTrans.length() && bus.equals(numTrans.substring(j,j+bus.length()))) {
+						System.out.println("Busqueda "+cont+" - "+"Nombre: "+nombre+", Numero: "+num);
+						cont++;
+						bandera=true;
+						break;
+					}
 				}
+				
 			}
 			
+		}
+		
+		if (bandera==false){
+			System.out.println("no hay ningun contacto que coincida con tu busqueda");
 		}
 		
 	}
@@ -113,42 +130,65 @@ public class Principal {
 			vContacto[i]= new Contacto();
 		}
 		
-		opc = pintaMenu(opc);
 		
-		switch (opc) {
-		case 1:
-			pos = buscarPoscicion(vContacto);
+		
+		
+		do {
 			
-			addContacto(vContacto, pos);
+			opc = pintaMenu(opc);
 			
-			break;
-			
-		case 2:
-			bus=leer.nextLine();
-			buscarContacto(vContacto, bus);
-			break;
-			
-		case 3:
-			//deleteContacto(vContacto);
-			break;
-			
-		case 4:
-			//editarContacto(vContacto);
-			break;
-			
-		case 5:
-			//verContacto(vContacto);
-			break;
-	
-		case 6:
-			System.out.println("Good bye");
-			System.exit(0);
-			break;
+			switch (opc) {
+			case 1:
+				pos = buscarPoscicion(vContacto);
+				
+				addContacto(vContacto, pos);
+				break;
+				
+			case 2:
+				
+				System.out.println("Dime el contacto o numero que quieres buscar");
+				bus=leer.nextLine();
+				buscarContacto(vContacto, bus);
+				break;
+				
+			case 3:
+				//Estoy aqui;
+				//Estoy aqui;
+				//Estoy aqui;
+				//Estoy aqui;
+				//Estoy aqui;
+				//Estoy aqui;
+				//Estoy aqui;
+				//Estoy aqui;
+				//deleteContacto(vContacto);
+				break;
+				
+			case 4:
+				//editarContacto(vContacto);
+				break;
+				
+			case 5:
+				//verContacto(vContacto);
+				break;
+		
+			case 6:
+				System.out.println("Good bye");
+				System.exit(0);
+				break;
 
-		default:
+			default:
+				
+				break;
+			}
 			
-			break;
-		}		
+			System.out.println("\n\n\n\n");
+			
+			
+		} while (opc!=6);
+		
+			
+		
+		
 	}
 
 
