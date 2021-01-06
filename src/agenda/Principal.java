@@ -84,7 +84,7 @@ public class Principal {
 			num = vContacto[i].getNumero();
 			numTrans= String.valueOf(num);
 			
-			if (!nombre.equals("cambiame")) {
+			if (vContacto[i]!=null && !nombre.equals("cambiame")) {
 				for (int j = 0; j < nombre.length(); j++) {
 					
 					if (j+bus.length()<=nombre.length() && bus.equals(nombre.substring(j,j+bus.length()))) {
@@ -115,7 +115,172 @@ public class Principal {
 		
 	}
 	
+	public static void deleteContacto(Contacto[] vContacto) {
+		
+		Scanner leernum = new Scanner(System.in);
+		Scanner leertext = new Scanner(System.in);
+		int pos=-99;
+		
+		System.out.println("Dime que contacto de estos quieres eliminar(la posicion, no su numero telefonico)");
+		verContacto(vContacto);		
+		pos = leernum.nextInt();
+		pos--;
+		
+		String nombre= vContacto[pos].getNombre(), confirm="";
+		int num = vContacto[pos].getNumero();
+		
+		if (vContacto[pos]!=null && !nombre.equals("cambiame") && num!=-99) {
+			System.out.println("¿Estas seguro de querer eliminar el contacto '"+nombre+"' con numero telefonico '"+num+"'?");
+			System.out.println("Introduce una 's' si quieres eliminarlo o una 'n' si no quieres hacerlo");
+			
+			do {
+				confirm = leertext.nextLine();
+				confirm = confirm.toLowerCase();
+				
+			} while (!confirm.equals("s") && !confirm.equals("n"));
+		}
+		
+		if (confirm.equals("s")) {
+			vContacto[pos].setNombre("cambiame");
+			vContacto[pos].setNumero(-99);
+			System.out.println("Tu contacto ha sido eliminado");
+		}else {
+			System.out.println("funcion cancelada");
+		}
+		
+		
+	}
+	
+	public static void editarContacto(Contacto[] vContacto) {
+		Scanner leernum = new Scanner(System.in);
+		Scanner leertext = new Scanner(System.in);
+		int pos=-99, eleccion=-99;
+		
+		
+		do {
+			
+			try {
+				System.out.println("Dime que contacto de estos quieres editar(la posicion, no su numero telefonico)");
+				verContacto(vContacto);		
+				pos = leernum.nextInt();
+				pos--;
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Ha habido un error al introducir tu opcion, por favor vuelve a introducir el numero");
+				leernum = new Scanner(System.in);
+			}
+			
+			
+			
+		} while (pos<0 || pos>9);
+		
+		
+		
+		String nombre= vContacto[pos].getNombre(), confirm="";
+		int num = vContacto[pos].getNumero();
+		
+		if (vContacto[pos]!=null && !nombre.equals("cambiame") && num!=-99) {
+			System.out.println("¿Estas seguro de querer editar el contacto '"+nombre+"' con numero telefonico '"+num+"'?");
+			System.out.println("Introduce una 's' si es el contacto que quieres editar o una 'n' si no quieres hacerlo");
+			
+			do {
+				confirm = leertext.nextLine();
+				confirm = confirm.toLowerCase();
+				
+			} while (!confirm.equals("s") && !confirm.equals("n"));
+		}
+		
+		
+		if (confirm.equals("s")) {
+			
+			do {
+				System.out.println("Si quieres cambiar solo el nombre pulsa 1");
+				System.out.println("Si quieres cambiar solo el numero telefonico pulsa 2");
+				System.out.println("Si quieres cambiar solo las dos cosas pulsa 3");
+				
+				try {
+					eleccion = leernum.nextInt();
+				} catch (Exception e) {
+					// TODO: handle exception
+					System.out.println("Ha habido un error al introducir tu opcion, por favor vuelve a introducir el numero");
+					leernum = new Scanner(System.in);
+				}
+				
+				
+			} while (eleccion<1 || eleccion>3);
+			
+			switch (eleccion) {
+			case 1:
+				System.out.println("Dime cual va a ser el nuevo nombre de "+nombre);
+				nombre= leertext.nextLine();
+				vContacto[pos].setNombre(nombre);
+				break;
+
+			case 2:
+				do {
+					try {
+						System.out.println("Dime cual va a ser el nuevo numero de "+nombre);
+						num = leernum.nextInt();
+						vContacto[pos].setNumero(num);
+					} catch (Exception e) {
+						// TODO: handle exception
+						System.out.println("Ha habido un error al introducir tu opcion, por favor vuelve a introducir el numero");
+						leernum = new Scanner(System.in);
+					}
+				} while (num<0);
+				break;
+				
+			case 3:
+				System.out.println("Dime cual va a ser el nuevo nombre de "+nombre);
+				nombre= leertext.nextLine();
+				vContacto[pos].setNombre(nombre);
+				
+				
+				do {
+					try {
+						System.out.println("Dime cual va a ser el nuevo numero de "+nombre);
+						num = leernum.nextInt();
+						vContacto[pos].setNumero(num);
+					} catch (Exception e) {
+						// TODO: handle exception
+						System.out.println("Ha habido un error al introducir tu opcion, por favor vuelve a introducir el numero");
+						leernum = new Scanner(System.in);
+					}
+				} while (num<0);
+				
+				break;
+			default:
+				break;
+			}
+			
+		}
+		
+	}
+	
+	
+	
+	public static void verContacto(Contacto[] vContacto) {
+		// TODO Auto-generated method stub
+		
+		String nombre="";
+		int num=-99;
+		
+				
+		for (int i = 0; i < vContacto.length; i++) {
+			nombre=vContacto[i].getNombre();
+			num = vContacto[i].getNumero();
+			
+			if (vContacto[i]!=null && !nombre.equals("cambiame")) {
+				System.out.println("Contacto "+(i+1)+" ------------- Nombre: "+nombre+" - Numero: "+num);
+			}
+		}
+		
+	}
+	
+	
+	
 	public static void main(String[] args) {
+		
 		// TODO Auto-generated method stub
 		int opc=-99;
 		int pos=-99;
@@ -152,23 +317,15 @@ public class Principal {
 				break;
 				
 			case 3:
-				//Estoy aqui;
-				//Estoy aqui;
-				//Estoy aqui;
-				//Estoy aqui;
-				//Estoy aqui;
-				//Estoy aqui;
-				//Estoy aqui;
-				//Estoy aqui;
-				//deleteContacto(vContacto);
+				deleteContacto(vContacto);
 				break;
 				
 			case 4:
-				//editarContacto(vContacto);
+				editarContacto(vContacto);
 				break;
 				
 			case 5:
-				//verContacto(vContacto);
+				verContacto(vContacto);
 				break;
 		
 			case 6:
@@ -190,6 +347,7 @@ public class Principal {
 		
 		
 	}
+
 
 
 
