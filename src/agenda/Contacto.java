@@ -2,21 +2,20 @@ package agenda;
 
 public class Contacto {
 
-	private String nombre = "cambiame";
-	private int numero = -99;
+	private String nombre;
+	private int numero;
 	
 	
 	
 	public Contacto() {
-		this.nombre = nombre;
-		this.numero = numero;
+		this.nombre = "cambiame";
+		this.numero = -99;
 	}
 	
 	public Contacto(String nombre, int numero) {
 		this.nombre = nombre;
 		this.numero = numero;
 	}
-	
 	
 	
 	public String getNombre() {
@@ -32,11 +31,5 @@ public class Contacto {
 		this.numero = numero;
 	}
 
-	
-	
-
-	
-	
-	
 	
 }

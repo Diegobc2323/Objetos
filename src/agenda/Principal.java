@@ -130,7 +130,7 @@ public class Principal {
 		int num = vContacto[pos].getNumero();
 		
 		if (vContacto[pos]!=null && !nombre.equals("cambiame") && num!=-99) {
-			System.out.println("¿Estas seguro de querer eliminar el contacto '"+nombre+"' con numero telefonico '"+num+"'?");
+			System.out.println("ï¿½Estas seguro de querer eliminar el contacto '"+nombre+"' con numero telefonico '"+num+"'?");
 			System.out.println("Introduce una 's' si quieres eliminarlo o una 'n' si no quieres hacerlo");
 			
 			do {
@@ -180,7 +180,7 @@ public class Principal {
 		int num = vContacto[pos].getNumero();
 		
 		if (vContacto[pos]!=null && !nombre.equals("cambiame") && num!=-99) {
-			System.out.println("¿Estas seguro de querer editar el contacto '"+nombre+"' con numero telefonico '"+num+"'?");
+			System.out.println("ï¿½Estas seguro de querer editar el contacto '"+nombre+"' con numero telefonico '"+num+"'?");
 			System.out.println("Introduce una 's' si es el contacto que quieres editar o una 'n' si no quieres hacerlo");
 			
 			do {
@@ -256,8 +256,6 @@ public class Principal {
 		}
 		
 	}
-	
-	
 	
 	public static void verContacto(Contacto[] vContacto) {
 		// TODO Auto-generated method stub
