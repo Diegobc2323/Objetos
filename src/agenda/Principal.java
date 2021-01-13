@@ -292,9 +292,7 @@ public class Principal {
 		for (int i = 0; i < vContacto.length; i++) {
 			vContacto[i]= new Contacto();
 		}
-		
-		
-		
+
 		
 		do {
 			
