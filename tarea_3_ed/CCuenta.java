@@ -7,7 +7,7 @@ package prácticaunidad3;
 
 /**
  *
- * @author 
+ * @author Diego Berenguer Celma
  */
 public class CCuenta {
 
