@@ -12,6 +12,7 @@ public class Contacto {
 		this.numero = -99;
 	}
 	
+	
 	public Contacto(String nombre, int numero) {
 		this.nombre = nombre;
 		this.numero = numero;

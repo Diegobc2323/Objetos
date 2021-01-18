@@ -4,7 +4,15 @@ import java.util.Scanner;
 
 public class Principal {
 
+	/**
+	 * @author Diego Berenguer Celma
+	 */
 	
+	/**
+	 * 
+	 * @param opc, recive la opcion para comprobar si es correcta
+	 * @return devuelve la opcion despues de comprobar que sea correcta
+	 */
 	public static int pintaMenu(int opc){
 		
 		Scanner leer = new Scanner(System.in);
@@ -34,6 +42,11 @@ public class Principal {
 		return opc;
 	}
 
+	/**
+	 * 
+	 * @param vContacto, recive el vector
+	 * @return devuelve la posicion del vector en la que no hay datos para rellenarla
+	 */
 	public static int buscarPoscicion(Contacto[] vContacto) {
 		
 		int pos=-99;
@@ -51,6 +64,11 @@ public class Principal {
 		return pos;
 	}
 	
+	/**
+	 * 
+	 * @param vContacto, recive el vector
+	 * @param pos, recive la posicion vacia en la que se tiene que añadir el contacto
+	 */
 	public static void addContacto(Contacto[] vContacto, int pos) {
 		Scanner leer = new Scanner(System.in);
 		Scanner leernum = new Scanner(System.in);
@@ -73,6 +91,11 @@ public class Principal {
 		vContacto[pos].setNumero(num);	
 	}
 	
+	/**
+	 * 
+	 * @param vContacto, recive el vector
+	 * @param bus, recive el dato que tiene que comparar con los datos del vector
+	 */
 	public static void buscarContacto(Contacto[] vContacto, String bus) {
 		
 		String nombre="", numTrans="";
@@ -115,6 +138,10 @@ public class Principal {
 		
 	}
 	
+	/**
+	 * 
+	 * @param vContacto, recive el vector
+	 */
 	public static void deleteContacto(Contacto[] vContacto) {
 		
 		Scanner leernum = new Scanner(System.in);
@@ -151,6 +178,10 @@ public class Principal {
 		
 	}
 	
+	/**
+	 * 
+	 * @param vContacto, recive el vector
+	 */
 	public static void editarContacto(Contacto[] vContacto) {
 		Scanner leernum = new Scanner(System.in);
 		Scanner leertext = new Scanner(System.in);
@@ -257,6 +288,10 @@ public class Principal {
 		
 	}
 	
+	/**
+	 * 
+	 * @param vContacto, recive el vector
+	 */
 	public static void verContacto(Contacto[] vContacto) {
 		// TODO Auto-generated method stub
 		
