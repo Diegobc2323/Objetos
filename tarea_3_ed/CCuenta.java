@@ -23,6 +23,13 @@ public class CCuenta {
     {
     }
     // Constructor con parámetro para iniciar todas las propiedades de la clase
+    /**
+     * 
+     * @param nom, recive el nombre del propietario de la cuenta
+     * @param cue, recive el numero de cuenta
+     * @param sal, recive el saldo de la cuenta
+     * @param tipo, recive el tipo de intereses de la cuenta
+     */
     public CCuenta (String nom, String cue, double sal, double tipo)
     {
         nombre =nom;
