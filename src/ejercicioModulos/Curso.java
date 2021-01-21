@@ -1,5 +1,7 @@
 package ejercicioModulos;
 
+import java.util.Scanner;
+
 public class Curso {
 
 	
@@ -11,12 +13,13 @@ public class Curso {
 		this.nombre = nombre;
 		this.tutor = tutor;
 		this.vModulos = new Modulo[10];
-		//Borrame luego, es solo para pruebas
-		vModulos[0] = new Modulo("Programacion", "PRG", 50);
-		vModulos[3] = new Modulo("Entornos", "ED", 50);
-		vModulos[8] = new Modulo("Lenguajes", "LG", 100);
 	}
 
+	public void addModulo(){
+		
+		
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
