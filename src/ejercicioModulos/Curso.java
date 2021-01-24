@@ -66,6 +66,36 @@ public class Curso {
 		return horasTotales;
 	}
 	
+	public void eliminarModulo() {
+		Scanner leer = new Scanner(System.in);
+		String comprobacion ="";
+		boolean bandera = false;
+		
+		System.out.println("dime el codigo del modulo que quieres eliminar");
+		for (Modulo m : vModulos) {
+			if (m!=null) {
+				System.out.println(m.getNombre()+"------- codigo del modulo: "+m.getCodigo());
+			}
+		}
+		
+		System.out.println("\n dime el codigo del modulo que quieras eliminar");
+		comprobacion = leer.nextLine();
+		
+		for (Modulo m : vModulos) {
+			if (m!=null && m.getCodigo().equalsIgnoreCase(comprobacion)) {
+				m = null;
+				bandera = true;
+			}
+		}
+		
+		if (bandera==false) {
+			System.out.println("No habia ningun modulo que se podia eliminar");
+		} else {
+			System.out.println("Un modulo ha sido eliminado");
+		}
+		
+	}
+	
 	
 	public String getNombre() {
 		return nombre;

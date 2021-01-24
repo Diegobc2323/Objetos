@@ -13,7 +13,8 @@ public class Principal {
 			System.out.println("1- Anadir un nuevo modulo");
 			System.out.println("2- Ver todos los modulos");
 			System.out.println("3- Ver horas del curso");
-			System.out.println("4- Salir");
+			System.out.println("4- Eliminar un modulo");
+			System.out.println("5- Salir");
 			try {
 				opc = leer.nextInt();
 			}catch (Exception e) {
@@ -22,7 +23,7 @@ public class Principal {
 				System.out.println("No puedese escribir ese dato");
 			}
 			
-		} while (opc < 1 || opc > 4);
+		} while (opc < 1 || opc > 5);
 		
 		return opc;
 	}
@@ -51,11 +52,14 @@ public class Principal {
 				System.out.println("El total de horas lectivas del curso es de "+c.horasYear()+" horas");
 				break;
 			case 4:
+				c.eliminarModulo();
+				break;
+			case 5:
 				System.out.println("Bye");
 				System.exit(0);
 				break;
 			}
-		} while (opc!=4);
+		} while (opc!=5);
 	}
 }
 
