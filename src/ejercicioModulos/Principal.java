@@ -9,9 +9,9 @@ public class Principal {
 		int opc = 0;
 
 		do {
-			System.out.println("Menú Gestión Curso");
-			System.out.println("1- Añadir un nuevo módulo");
-			System.out.println("2- Ver todos los módulos");
+			System.out.println("Menu Gestion Curso");
+			System.out.println("1- Anadir un nuevo modulo");
+			System.out.println("2- Ver todos los modulos");
 			System.out.println("3- Ver horas del curso");
 			System.out.println("4- Salir");
 			try {
@@ -31,10 +31,31 @@ public class Principal {
 	
 	public static void main(String[] args) {
 
-		pintaMenu();
-		Curso c = new Curso("1º DAW", "José Micolau");
-		System.out.println(c.toString());
+		int opc = 0;
+		
+		Curso c = new Curso("1� DAW", "Jose Micolau");
+		
 
+		
+		do {
+			opc = pintaMenu();
+			
+			switch (opc) {
+			case 1:
+				c.addModulo();
+				break;
+			case 2:
+				System.out.println(c.toString());
+				break;
+			case 3:
+				System.out.println("El total de horas lectivas del curso es de "+c.horasYear()+" horas");
+				break;
+			case 4:
+				System.out.println("Bye");
+				System.exit(0);
+				break;
+			}
+		} while (opc!=4);
 	}
 }
 

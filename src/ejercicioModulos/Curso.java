@@ -16,9 +16,56 @@ public class Curso {
 	}
 
 	public void addModulo(){
-		
+		for (int i = 0; i < vModulos.length; i++) {
+			
+			String nombre="", codigo="";
+			int numHoras=-99;
+			Scanner leerTxt = new Scanner(System.in);
+			Scanner leerNum = new Scanner(System.in);
+			
+			if (vModulos[i]==null) {
+				System.out.println("Dime el nombre del nuevo modulo");
+				nombre = leerTxt.nextLine();
+				System.out.println("Dime el codigo del nuevo modulo");
+				codigo = leerTxt.nextLine();
+				System.out.println("Dime las horas que durara el nuevo modulo");
+				do {
+					try {
+						numHoras = leerNum.nextInt();
+					} catch (Exception e) {
+						numHoras=-99;
+						leerNum = new Scanner(System.in);
+						System.out.println("Introduzca un valor numerico por favor (y que sea mayor que 0)");
+					}
+					if (numHoras<=0) {
+						System.out.println("Introduzca un numero de horas valido por favor (minimo debe ser mayor que 0)");
+					}
+				} while (numHoras<=0);
+				
+				vModulos[i]= new Modulo(nombre, codigo, numHoras);
+				System.out.println("modulo añadido correctamente");
+				break;
+			}
+		}
 		
 	}
+	
+	public int horasYear() {
+		
+		int horasTotales=0;
+		
+		for (Modulo m : vModulos) {
+			if (m!=null) {
+				
+				horasTotales+=m.getNumHoras();
+			}
+			
+			
+		}
+		
+		return horasTotales;
+	}
+	
 	
 	public String getNombre() {
 		return nombre;
@@ -54,6 +101,6 @@ public class Curso {
 			}
 		}
 		
-		return  nombre + "\n" + tutor + "\nMÃ³dulos\n-------\n" + datos;
+		return  nombre + "\n" + tutor + "\n numero modulos\n-------\n" + datos;
 	}
 }
