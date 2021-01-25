@@ -43,7 +43,7 @@ public class Curso {
 				} while (numHoras<=0);
 				
 				vModulos[i]= new Modulo(nombre, codigo, numHoras);
-				System.out.println("modulo añadido correctamente");
+				System.out.println("modulo aï¿½adido correctamente");
 				break;
 			}
 		}
@@ -81,13 +81,13 @@ public class Curso {
 		System.out.println("\n dime el codigo del modulo que quieras eliminar");
 		comprobacion = leer.nextLine();
 		
-		for (Modulo m : vModulos) {
-			if (m!=null && m.getCodigo().equalsIgnoreCase(comprobacion)) {
-				m = null;
+		for (int i = 0; i < vModulos.length; i++) {
+			if (vModulos[i]!=null && vModulos[i].getCodigo().equalsIgnoreCase(comprobacion)) {
+				vModulos[i] = null;
 				bandera = true;
 			}
 		}
-		
+				
 		if (bandera==false) {
 			System.out.println("No habia ningun modulo que se podia eliminar");
 		} else {
