@@ -20,6 +20,6 @@ public final class Agua extends Bebida{
 	
 	@Override
 	public String toString() {
-		return "Agua [origen=" + origen + "]";
+		return super.toString() + "\n	-este agua proviene de " + origen+"\n";
 	}
 }
