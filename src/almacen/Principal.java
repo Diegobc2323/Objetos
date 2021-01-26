@@ -8,7 +8,16 @@ public class Principal {
 		
 		A.introValores();
 		
-		System.out.println(A.toString());
+		
+		//System.out.println(A.calcularBebidas());  calcular el precio de todos los productos
+		
+		//System.out.println(A.calcularMarca());    calcular el precio de los productos de una marca
+		
+		//System.out.println(A.calcularEstanteria()); calcular el precio de una estanteria
+		
+		
+		
+		//System.out.println(A.toString());    mostrar informacion
 		
 		
 	}

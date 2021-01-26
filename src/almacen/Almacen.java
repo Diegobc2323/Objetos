@@ -6,6 +6,10 @@ public class Almacen {
 
 	Bebida mEstanteria[][];
 	
+	public Almacen() {
+		super();
+		this.mEstanteria = new Bebida[10][10];
+	}
 	public void introValores() {
 		mEstanteria[0][0] = new Azucarada("123", 12, 28, "cola loca", 80, true);
 		mEstanteria[0][1] = new Azucarada("234", 11, 40, "fanta", 60, true);
@@ -15,12 +19,6 @@ public class Almacen {
 	}
 
 	
-	public Almacen() {
-		super();
-		this.mEstanteria = new Bebida[10][10];
-	}
-	
-
 	public Bebida[][] getmEstanteria() {
 		return mEstanteria;
 	}
@@ -29,6 +27,64 @@ public class Almacen {
 	}
 
 
+	public double calcularBebidas() {
+		double precioTotal=0;
+		
+		for (int i = 0; i < mEstanteria.length; i++) {
+			for (int j = 0; j < mEstanteria.length; j++) {
+				if (mEstanteria[i][j]!=null) {
+					precioTotal += mEstanteria[i][j].getPrecio();
+				}
+			}
+		}
+		
+		
+		
+		return precioTotal;
+	}
+	
+	public double calcularMarca() {
+		double precioTotal=0;
+		
+		for (int i = 0; i < mEstanteria.length; i++) {
+			for (int j = 0; j < mEstanteria.length; j++) {
+				if (mEstanteria[i][j]!=null && mEstanteria[i][j].getMarca().equalsIgnoreCase("cola loca")) {
+					precioTotal += mEstanteria[i][j].getPrecio();
+				}
+			}
+		}
+		
+		
+		
+		return precioTotal;
+	}
+
+	public double calcularEstanteria() {
+		double precioTotal=0;
+		
+		for (int i = 0; i < mEstanteria.length; i++) {
+			for (int j = 0; j < mEstanteria.length; j++) {
+				if (mEstanteria[i][j]!=null && i==1) {
+					precioTotal += mEstanteria[i][j].getPrecio();
+				}
+			}
+		}
+		
+		
+		
+		return precioTotal;
+	}
+
+	public void addProducto() {
+		
+		Azucarada a = new Azucarada("123", 9, 9, "cola loca", 9, false);
+		Agua b = new Agua("852", 9, 9, "marca blanca", "del mercadona");
+		
+		
+		
+	}
+	
+	
 	@Override
 	public String toString() {
 		
@@ -45,8 +101,4 @@ public class Almacen {
 		return "Esto es lo que hay en el almacen \n"+info+"\n";
 		
 	}
-	
-	
-	
-	
 }
