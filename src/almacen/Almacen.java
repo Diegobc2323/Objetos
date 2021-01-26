@@ -77,10 +77,36 @@ public class Almacen {
 
 	public void addProducto() {
 		
-		Azucarada a = new Azucarada("123", 9, 9, "cola loca", 9, false);
-		Agua b = new Agua("852", 9, 9, "marca blanca", "del mercadona");
+		Azucarada a = new Azucarada("951", 9, 9, "cola loca", 9, false);
+		String cod=a.getId();
+		boolean esta = false, para=false;
 		
 		
+		for (int i = 0; i < mEstanteria.length; i++) {
+			for (int j = 0; j < mEstanteria.length; j++) {
+				if (mEstanteria[i][j]!=null && mEstanteria[i][j].getId().equalsIgnoreCase(cod)) {
+					esta=true;
+					System.out.println("Tu producto ya esta en stock");
+					break;
+				}
+			}
+		}
+		
+		if (esta==false) {
+			for (int i = 0; i < mEstanteria.length; i++) {
+				for (int j = 0; j < mEstanteria.length; j++) {
+					if (mEstanteria[i][j]==null) {
+						mEstanteria[i][j]=a;
+						System.out.println("Producto añadido");
+						para=true;
+						break;
+					}
+				}
+				if (para==true) {
+					break;
+				}
+			}
+		}
 		
 	}
 	

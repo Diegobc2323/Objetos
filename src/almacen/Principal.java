@@ -15,7 +15,7 @@ public class Principal {
 		
 		//System.out.println(A.calcularEstanteria()); calcular el precio de una estanteria
 		
-		
+		//A.addProducto();							añadir un producto si no esta
 		
 		//System.out.println(A.toString());    mostrar informacion
 		
